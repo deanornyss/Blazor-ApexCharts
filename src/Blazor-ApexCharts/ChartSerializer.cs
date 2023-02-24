@@ -8,7 +8,8 @@ namespace BlazorApexCharts
 {
     public class ChartSerializer
     {
-        private static Dictionary<Type, JsonSerializerOptions> _serializerOptions = new Dictionary<Type, JsonSerializerOptions>();
+        private static Dictionary<Type, JsonSerializerOptions> _serializerOptions =
+            new Dictionary<Type, JsonSerializerOptions>();
 
         private JsonSerializerOptions GenerateOptions<TItem>() where TItem : class
         {
@@ -17,6 +18,7 @@ namespace BlazorApexCharts
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             };
+
             serializerOptions.Converters.Add(new DataPointConverter<TItem>());
             serializerOptions.Converters.Add(new SeriesConverter<TItem>());
             serializerOptions.Converters.Add(new CustomJsonStringEnumConverter());
@@ -29,6 +31,7 @@ namespace BlazorApexCharts
         public JsonSerializerOptions GetOptions<TItem>() where TItem : class
         {
             var key = typeof(TItem);
+
             if (_serializerOptions.ContainsKey(key))
             {
                 return _serializerOptions[key];

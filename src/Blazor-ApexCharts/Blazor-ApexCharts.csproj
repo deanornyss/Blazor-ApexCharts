@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     
     <Version>0.1.0-Alpha</Version>
     <Authors>Joakim Dangården</Authors>
